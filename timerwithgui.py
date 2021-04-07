@@ -1,7 +1,7 @@
 import time, datetime
 from playsound import playsound
 from tkinter import *
-from tkinter import messagebox        
+
 x = [input("One by one, hour, min, sec. ") for i in range(3)]
 root = Tk()
 root.geometry("960x540")
@@ -9,17 +9,14 @@ root.geometry("960x540")
 root.title("Time Counter")
 root.configure(bg='black')
 
-tim = StringVar()
-hour = StringVar()
-minute  = StringVar()
-second = StringVar()
-text = StringVar()
+tim = StringVar(); hour = StringVar(); minute  = StringVar(); second = StringVar(); text = StringVar(); temp = 0
 
 hour.set(int(x[0]))
 minute.set(int(x[1]))
 second.set(int(x[2]))
 tim.set("")
 text.set("H/M/S")
+
 display = Label(root,font=("Arial",80,"bold"), fg = "white", bg = "black", textvariable=text)
 display.pack(anchor = "w", side = TOP)
 
@@ -35,7 +32,6 @@ seconds.pack(side=LEFT)
 timern = Label(root, font=("Arial ", 12, "bold"), fg = "white", bg = "black", textvariable=tim)
 timern.pack( anchor = "e", side = BOTTOM)
 
-temp = 0
 def poop():
     try:
         temp = int(hour.get())*3600 + int(minute.get())*60 + int(second.get())
@@ -64,6 +60,7 @@ def poop():
 
 btn = Button(root, text='Start Countdown',bd = 2, fg = "white", bg="black" ,command= poop)
 btn.place(x = 850,y = 450)
+
 root.bind("x", quit)
 root.mainloop()
 
